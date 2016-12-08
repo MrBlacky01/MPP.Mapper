@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MapperLibrary
 {
-    interface IMapperFunctionCreator
+    public interface IMapperFunctionCreator
     {
         Func<TSource, TDestination> CreateFunction <TSource, TDestination>(IEnumerable<MappingPropertyInfoPair> properties)
             where TDestination : new();
