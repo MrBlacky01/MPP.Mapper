@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MapperLibrary
 {
-    internal class MappingPair
+    public class MappingPair
     {
         public Type Source { get; set; }
         public Type Destination { get; set; }
