@@ -15,7 +15,7 @@ namespace MapperLibrary.UnitTests
             FirstProperty = 5,
             SecondProperty = "5",
             ThirdProperty = 5.0,
-            FourthProperty = 1,
+            FourthProperty = 5 ,
             DtoTempClass = new TempSubClass()
         };
 

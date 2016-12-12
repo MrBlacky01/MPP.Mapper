@@ -8,8 +8,8 @@ namespace MapperLibrary
 {
     public interface IMapperCache
     {
-        void Add(MappingPair pair, Delegate function);
-        Delegate GetCache (MappingPair pair);
+        void Add<TSource, TDestination>(MappingPair pair, Func<TSource, TDestination> function);
+        Func<TSource, TDestination> GetCache<TSource, TDestination>(MappingPair pair);
         bool Contains(MappingPair pair);
     }
 }

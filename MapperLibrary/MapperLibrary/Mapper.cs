@@ -8,7 +8,6 @@ namespace MapperLibrary
     {
         private readonly IMapperCache _mapperCache;
         private readonly IMapperFunctionCreator _mappingFunctionCreator;
-        private readonly MapperConfiguration _mapperConfiguration;
 
         public Mapper(IMapperCache cash, IMapperFunctionCreator creator)
         {
@@ -23,25 +22,6 @@ namespace MapperLibrary
             _mapperCache = cash;
             _mappingFunctionCreator = creator;
         }
-
-        public Mapper(MapperConfiguration configuration) : this(new MapperCache(), new MapperFunctionCreator())
-        {
-            if (configuration == null)
-            {
-                throw new ArgumentNullException(nameof(configuration));
-            }
-            _mapperConfiguration = configuration;
-        }
-
-        public Mapper(IMapperCache cash, IMapperFunctionCreator creator, MapperConfiguration configuration) : this(cash, creator)
-        {
-            if (configuration == null)
-            {
-                throw new ArgumentNullException(nameof(configuration));
-            }
-            _mapperConfiguration = configuration;
-        }
-        
 
         public Mapper() : this(new MapperCache(), new MapperFunctionCreator())
         {
@@ -72,7 +52,7 @@ namespace MapperLibrary
             Func<TSource, TDestination> result;
             if (_mapperCache.Contains(mappingInfo))
             {
-                result = ((Func<TSource, TDestination>)_mapperCache.GetCache(mappingInfo));
+                result = _mapperCache.GetCache<TSource,TDestination>(mappingInfo);
             }
             else
             {
